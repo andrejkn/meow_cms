@@ -23,12 +23,12 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 
-  Posts = new Mongo.Collection("posts");
+  var Posts = new Mongo.Collection("posts");
 
   Posts.insert({
     createdBy: 'andrej',
     createdAt: new Date(),
-    title: Session.get('subject'),
-    content: Session.get('content')
+    title: 'blah', //Session.get('subject'),
+    content: 'more blah' //Session.get('content')
   });
 }
