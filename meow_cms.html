@@ -1,0 +1,20 @@
+<head>
+  <title>meow_cms</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+    <form>
+        <div>Subject <input id="subject" type="text"></div>
+        <div>Content</div>
+        <div><textarea id="content"></textarea></div>
+        <button>Click Me</button>
+    </form>
+
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
