@@ -4,46 +4,26 @@
 </head>
 
 <body>
-  <h1>MEOW Content Management System</h1>
+    <h1>MEOW Content Management System</h1>
 
-  {{> hello}}
-
-  <div>
-      <div>LOGIN</div>
-      <div>
-          {{> login}}
-      </div>
-  </div>
-
-
+    {{> main}}
+    {{> posts_list}}
 </body>
 
-<template name="hello">
+<template name="main">
 
+    <form class="new_post">
+        <div></div>
+        <div>
+            <input name="subject" type="text" placeholder="Subject">
+        </div>
 
+        <div></div>
+        <div>
+            <textarea name="content" placeholder="Type in your content"></textarea>
+        </div>
 
-    <div>Subject</div>
-    <div>
-        <input id="subject" type="text">
-	</div>
-
-    <div>Content</div>
-    <div>
-        <textarea id="content"></textarea>
-    </div>
-    <button>Click Me</button>
-
-	<p class="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
-	<p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
-	<p class="text-error">Donec ullamcorper nulla non metus auctor fringilla.</p>
-	<p class="text-info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.</p>
-	<p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-	<div class="btn-group">
-		<button class="btn">Left</button>
-		<button class="btn">Middle</button>
-		<button class="btn">Right</button>
-	</div>
-
+        <button id="save_post">Post</button>
+    </form>
 
 </template>

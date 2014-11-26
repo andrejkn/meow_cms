@@ -1,19 +1,23 @@
+
 if (Meteor.isClient) {
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
+  Template.main.events({
+    'submit .new_post': function (event) {
       // increment the counter when button is clicked
-      var subject = $('#subject').val(),
-          content = $('#content').val();
+      var subject = event.target.subject.value,
+          content = event.target.content.value,
+          user = 'andrej';
 
-      Session.set('subject', subject);
-      Session.set('content', content);
+      if (!_.isEmpty(user) && !_.isEmpty(subject) && !_.isEmpty(content)) {
+        Posts.insert({
+          createdBy: user,
+          createdAt: new Date(),
+          subject: subject,
+          content: content,
+          visible: false,
+          editedAt: new Date()
+        });
+      }
     }
   });
 }
@@ -21,14 +25,5 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
-  });
-
-  var Posts = new Mongo.Collection("posts");
-
-  Posts.insert({
-    createdBy: 'andrej',
-    createdAt: new Date(),
-    title: 'blah', //Session.get('subject'),
-    content: 'more blah' //Session.get('content')
   });
 }

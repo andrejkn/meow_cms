@@ -1,0 +1,23 @@
+<template name="posts_list">
+    <h3>Posts:</h3>
+    <ul>
+        <div class="row">
+            <div>Subject</div>
+            <div>Content</div>
+        </div>
+
+        <div class="row">
+        {{#each posts}}
+            <li>
+                <div>
+                    {{subject}}
+                </div>
+
+                <div>
+                    {{content}}
+                </div>
+            </li>
+        {{/each}}
+        </div>
+    </ul>
+</template>
