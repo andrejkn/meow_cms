@@ -1,3 +1,8 @@
 .row_list {
     border: 1px solid #000;
 }
+
+.post_content_textbox {
+    margin: 10px 0px 10px 0px;
+    width: 1000px !important;
+}

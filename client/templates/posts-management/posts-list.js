@@ -3,11 +3,18 @@ if (Meteor.isClient) {
     // This code only runs on the client
     Template.posts_list.helpers({
         posts: function () {
-            return Posts.find({});
+            var count = 1,
+                posts = Posts.find();
+
+            return posts.map(function (post, index, cursor) {
+                post.index = count;
+                count += 1;
+                return post;
+            });
         },
 
         formatDate: function (date) {
-            console.dir(date);
+            //console.dir(date);
             var formattedDate = date.getDay() + '/' +
                 date.getMonth() + '/' +
                 date.getFullYear() + ' ' +
