@@ -46,6 +46,17 @@ if (Meteor.isClient) {
 
         'click .remove_post': function () {
             Posts.remove(this._id);
+        },
+
+        'click .edit_post': function () {
+            Session.set('id-of-post-to-be-edited', this._id);
+
+            // load the post that will be edited in the editor
+            var subjectSelector = $('#post_subject_holder'),
+                contentSelector = $('#post_content_holder');
+
+            subjectSelector.val(this.subject);
+            contentSelector.val(this.content);
         }
     });
 }

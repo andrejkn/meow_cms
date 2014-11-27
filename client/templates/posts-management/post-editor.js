@@ -2,21 +2,38 @@
 if (Meteor.isClient) {
 
   Template.post_editor.events({
-    'submit .new_post': function (event) {
-      // increment the counter when button is clicked
-      var subject = event.target.subject.value,
-          content = event.target.content.value,
-          user = 'andrej';
+    'click #save_post': function () {
 
-      if (!_.isEmpty(user) && !_.isEmpty(subject) && !_.isEmpty(content)) {
-        Posts.insert({
-          createdBy: user,
-          createdAt: new Date(),
-          subject: subject,
-          content: content,
-          visible: false,
-          editedAt: null
-        });
+      // increment the counter when button is clicked
+      var subject = $('#post_subject_holder').val(),
+          content = $('#post_content_holder').val(),
+          user = 'andrej',
+          editId = Session.get('id-of-post-to-be-edited');
+
+      if (!_.isEmpty(user) && !_.isEmpty(content)) {
+
+        // if in EDIT mode
+        if (editId) {
+          Posts.update({
+            _id: editId
+          }, {
+            $set: {
+              content: content,
+              subject: subject,
+              editedAt: new Date()
+            }
+          });
+          Session.set('id-of-post-to-be-edited', undefined);
+        } else {
+          Posts.insert({
+            createdBy: user,
+            createdAt: new Date(),
+            subject: subject,
+            content: content,
+            visible: false,
+            editedAt: null
+          });
+        }
       }
     }
   });
