@@ -1,7 +1,7 @@
 
 if (Meteor.isClient) {
 
-  Template.main.events({
+  Template.post_editor.events({
     'submit .new_post': function (event) {
       // increment the counter when button is clicked
       var subject = event.target.subject.value,

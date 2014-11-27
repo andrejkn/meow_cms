@@ -7,35 +7,7 @@
 <body>
     <h1>MEOW Content Management System</h1>
 
-    {{> main}}
+    {{> post_editor}}
     {{> posts_list}}
 </body>
 
-<template name="main">
-
-    <div class="container">
-        Post Mode:
-        <div class="nav-collapse collapse navbar-responsive-collapse">
-            <ul class="nav">
-                <li class="active"><a href="#">Text</a></li>
-                <li><a href="#">HTML</a></li>
-            </ul>
-        </div><!-- /.nav-collapse -->
-
-        <form class="new_post">
-            <div class="input-group container">
-                <span class="input-group-addon">Subject</span>
-                <input name="subject" type="text" class="form-control" placeholder="Enter Your Post Subject">
-            </div>
-            <div class="input-group container">
-                <textarea name="content" class="form-control" placeholder="Type in your content"></textarea>
-                <button id="save_post">Post</button>
-            </div>
-
-        </form>
-
-    </div>
-
-
-
-</template>
