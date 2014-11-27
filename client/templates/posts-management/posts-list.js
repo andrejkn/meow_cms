@@ -1,5 +1,6 @@
 
 if (Meteor.isClient) {
+
     // This code only runs on the client
     Template.posts_list.helpers({
         posts: function () {
@@ -14,7 +15,10 @@ if (Meteor.isClient) {
         },
 
         formatDate: function (date) {
-            //console.dir(date);
+            if (_.isNull(date) || _.isUndefined(date)) {
+                return '...';
+            }
+
             var formattedDate = date.getDay() + '/' +
                 date.getMonth() + '/' +
                 date.getFullYear() + ' ' +
@@ -25,7 +29,23 @@ if (Meteor.isClient) {
         },
 
         concatenate: function(content, numCharacters) {
-            return content.substr(0, numCharacters);
+            return content.substr(0, numCharacters) + '...';
+        }
+    });
+
+    Template.posts_list.events({
+        'click .post_content_list': function () {
+            var selectedContent = '#post_content_tooltip_' + this.index;
+            $(selectedContent).show();
+        },
+
+        'mouseleave .post_content_list': function () {
+            var selectedContent = '#post_content_tooltip_' + this.index;
+            $(selectedContent).hide();
+        },
+
+        'click .remove_post': function () {
+            Posts.remove(this._id);
         }
     });
 }

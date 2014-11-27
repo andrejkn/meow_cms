@@ -1,24 +1,26 @@
 <template name="post_editor">
 
 	<div class="container">
-		<div class="input-group">
-            <span class="input-group-addon">Subject</span>
-                <ul class="nav nav-tabs">
-				<li role="presentation">Post Mode:</li>
-				<li role="presentation" class="active"><a href="#">Text</a></li>
-				<li role="presentation"><a href="#">HTML</a></li>
-			</ul>
-        </div>
 
 		<form class="new_post">
 			<div class="input-group">
 				<span class="input-group-addon">Subject</span>
 				<input name="subject" type="text" class="form-control" placeholder="Enter Your Post Subject">
 			</div>
+
+			<br/>
+            <div class="input-group">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="#">Text</a></li>
+                    <li role="presentation"><a href="#">HTML</a></li>
+                </ul>
+            </div>
+
 			<textarea name="content" class="form-control" rows="10" placeholder="Type in your content"></textarea>
 
+            <br/>
 			<div class="input-group">
-				<button  id="save_post" type="button" class="btn btn-lg btn-primary">Save</button>
+				<button  id="save_post" type="submit" class="btn btn-lg btn-primary">Save</button>
             </div>
 		</form>
 

@@ -15,7 +15,7 @@ if (Meteor.isClient) {
           subject: subject,
           content: content,
           visible: false,
-          editedAt: new Date()
+          editedAt: null
         });
       }
     }
