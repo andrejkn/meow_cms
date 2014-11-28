@@ -22,11 +22,11 @@
                     <td>{{subject}}</td>
                     <td>
 						<div>
-							<div id="post_content_tooltip_{{index}}" style="display: inline-block; position: absolute;display: none;">
+							<div id="post_content_tooltip_{{index}}" class="meow_tooltip meow_hidden">
                             	{{>post_content_tooltip}}
                             </div>
 							<div class="post_content_list">
-								{{concatenate content 100}}
+								{{{concatenate content 100}}}
 							</div>
                         </div>
 
@@ -53,9 +53,12 @@
 </template>
 
 <template name="post_content_tooltip">
-    <div class="popover fade right in" role="tooltip" style="/**top: 83px; left: 110.265625px; */display: block; position: relative;">
-		<!--<div class="arrow" style="top: 50%;"></div>-->
-		<h3 class="popover-title"><b>{{subject}}</b></h3>
-		<div class="popover-content">{{content}}</div>
+    <div class="popover fade right in" role="tooltip" style="display: block; position: relative;">
+		<h3 class="popover-title"><b>{{subject}}</b>
+			<div class="pull-right">
+				<span class="glyphicon glyphicon-remove-circle post_content_tooltip_remove" aria-hidden="true"></span>
+			</div>
+		</h3>
+		<div class="popover-content scroll" style="height: 100px;">{{{content}}}</div>
 	</div>
 </template>

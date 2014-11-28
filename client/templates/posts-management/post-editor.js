@@ -1,12 +1,22 @@
 
 if (Meteor.isClient) {
 
+  Meteor.startup(function () {
+    Session.set('editorMode', 'text');
+  });
+
+  Template.post_editor.helpers({
+    isActive: function (editorMode) {
+      return Session.get('editorMode') === editorMode;
+    }
+  });
+
   Template.post_editor.events({
     'click #save_post': function () {
 
       // increment the counter when button is clicked
       var subject = $('#post_subject_holder').val(),
-          content = $('#post_content_holder').val(),
+          content = $('#post_content_holder').html(),
           user = 'andrej',
           editId = Session.get('id-of-post-to-be-edited');
 
@@ -35,7 +45,16 @@ if (Meteor.isClient) {
           });
         }
       }
+    },
+
+    'click #text_mode' : function () {
+      Session.set('editorMode', 'text');
+    },
+
+    'click #html_mode' : function () {
+      Session.set('editorMode', 'html');
     }
+
   });
 }
 

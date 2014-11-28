@@ -37,12 +37,17 @@ if (Meteor.isClient) {
         'click .post_content_list': function () {
             var selectedContent = '#post_content_tooltip_' + this.index;
             $(selectedContent).show();
+
+            $('.post_content_list, .post_content_tooltip_remove').click( function() {
+                $('.meow_hidden').hide();
+            });
+
         },
 
-        'mouseleave .post_content_list': function () {
-            var selectedContent = '#post_content_tooltip_' + this.index;
-            $(selectedContent).hide();
-        },
+        //'click body': function () {
+        //    var selectedContent = '#post_content_tooltip_' + this.index;
+        //    $(selectedContent).hide();
+        //},
 
         'click .remove_post': function () {
             Posts.remove(this._id);
@@ -56,7 +61,7 @@ if (Meteor.isClient) {
                 contentSelector = $('#post_content_holder');
 
             subjectSelector.val(this.subject);
-            contentSelector.val(this.content);
+            contentSelector.html(this.content);
         }
     });
 }

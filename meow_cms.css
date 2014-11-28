@@ -1,3 +1,19 @@
+/**
+ * MEOW global
+ */
+
+.meow_tooltip {
+    position: absolute;
+}
+
+.meow_hidden {
+    display: none;
+}
+
+.post_content_tooltip_remove {
+    cursor: pointer;
+}
+
 .row_list {
     border: 1px solid #000;
 }
@@ -5,4 +21,16 @@
 .post_content_textbox {
     margin: 10px 0px 10px 0px;
     width: 1000px !important;
+}
+
+.scroll {
+    overflow: scroll;
+}
+
+/**
+ * Post editor
+ */
+
+#post_content_holder {
+    min-height: 300px;
 }
