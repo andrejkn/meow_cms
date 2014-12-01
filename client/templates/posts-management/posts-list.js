@@ -1,13 +1,13 @@
 
 if (Meteor.isClient) {
 
-	// This code only runs on the client
+	// Helper functions
 	Template.posts_list.helpers({
 		posts: function () {
 			var count = 1,
 				posts = Posts.find();
 
-			return posts.map(function (post, index, cursor) {
+			return posts.map(function (post) {
 				post.index = count;
 				count += 1;
 				return post;
@@ -33,6 +33,7 @@ if (Meteor.isClient) {
 		}
 	});
 
+	// Events
 	Template.posts_list.events({
 		'click .post_content_list': function () {
 			var selectedContent = '#post_content_tooltip_' + this.index;
@@ -49,14 +50,32 @@ if (Meteor.isClient) {
 		},
 
 		'click .edit_post': function () {
-			Session.set('id-of-post-to-be-edited', this._id);
+			var previouslySelectedToEditId = Session.get('id-of-post-to-be-edited'),
+				previouslySelectedToEditIndex = Session.get('index-of-post-to-be-edited'),
+				selectedToEditId = this._id,
+				selectedToEditIndex = this.index,
+				subjectSelector = $('#post_subject_holder'),
+				contentSelector = $('#post_text_content_holder');
 
-			// load the post that will be edited in the editor
-			var subjectSelector = $('#post_subject_holder'),
-				contentSelector = $('#post_content_holder');
+			if (!_.isUndefined(previouslySelectedToEditIndex)) {
+				$('#post_row_' + previouslySelectedToEditIndex).removeClass('success');
+			}
 
-			subjectSelector.val(this.subject);
-			contentSelector.html(this.content);
+			subjectSelector.val('');
+			contentSelector.html('');
+
+			if ( selectedToEditId === previouslySelectedToEditId ) {
+				Session.set('id-of-post-to-be-edited', undefined);
+				Session.set('index-of-post-to-be-edited', undefined);
+			} else {
+				Session.set('id-of-post-to-be-edited', selectedToEditId);
+				Session.set('index-of-post-to-be-edited', selectedToEditIndex);
+
+				$('#post_row_' + selectedToEditIndex).addClass('success');
+				// load the post that will be edited in the editor
+				subjectSelector.val(this.subject);
+				contentSelector.html(this.content);
+			}
 		}
 	});
 }

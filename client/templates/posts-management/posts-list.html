@@ -17,7 +17,7 @@
 			</thead>
 			<tbody>
 				{{#each posts}}
-				<tr>
+				<tr id="post_row_{{index}}">
 					<td>{{index}}</td>
 					<td>{{subject}}</td>
 					<td>
@@ -53,9 +53,11 @@
 </template>
 
 <template name="post_content_tooltip">
-	<div class="popover fade right in" role="tooltip" style="display: block; position: relative;">
-		<h3 class="popover-title"><b>{{subject}}</b>
-			<div class="pull-right">
+	<div class="popover fade right in" role="tooltip" style="display: block; position: relative; width: 200px;">
+		<h3 class="popover-title">
+			<b>{{#if subject}} {{subject}} {{else}} No Subject {{/if}} </b>
+
+			<div class="pull-right" style="margin-left: 5px;">
 				<span class="glyphicon glyphicon-remove-circle post_content_tooltip_remove" aria-hidden="true"></span>
 			</div>
 		</h3>

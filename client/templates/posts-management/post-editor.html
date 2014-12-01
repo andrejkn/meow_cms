@@ -15,7 +15,8 @@
 			</ul>
 		</div>
 
-		<div id="post_content_holder" class="form-control scroll" contentEditable="true"></div>
+		<div id="post_text_content_holder" class="form-control scroll {{#if isActive 'html'}} hidden{{/if}}" contentEditable="true" placeholder="Text"></div>
+		<textarea id="post_html_content_holder" class="form-control scroll {{#if isActive 'text'}} hidden{{/if}}" rows="14" placeholder="HTML">{{htmlPostContent}}</textarea>
 
 		<br/>
 		<div class="input-group">
