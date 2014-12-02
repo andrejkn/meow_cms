@@ -1,12 +1,5 @@
 
 if (Meteor.isClient) {
-
-	Tracker.autorun(function () {
-		if (Session.equals('isReadyToRoll', 'ok')) {
-			alert('We are ready');
-		}
-	});
-
 	Meteor.startup(function () {
 		Session.set('editorMode', 'text');
 		Session.set('postContentHtml', '');
@@ -32,8 +25,10 @@ if (Meteor.isClient) {
 		'click #save_post': function () {
 
 			// increment the counter when button is clicked
-			var subject = $('#post_subject_holder').val(),
-				content = $('#post_text_content_holder').html(),
+			var contentSelector = $('#post_text_content_holder'),
+				subjectSelector = $('#post_subject_holder'),
+                subject = subjectSelector.val(),
+				content = contentSelector.html(),
 				user = 'andrej',
 				editId = Session.get('id-of-post-to-be-edited');
 
@@ -53,8 +48,8 @@ if (Meteor.isClient) {
 
 					Session.set('id-of-post-to-be-edited', undefined);
 					$('#post_row_' + Session.get('index-of-post-to-be-edited')).removeClass('success');
-					$('#post_subject_holder').val('');
-					$('#post_text_content_holder').html('');
+					subjectSelector.val('');
+					contentSelector.html('');
 					Session.set('index-of-post-to-be-edited', undefined);
 
 				} else {
