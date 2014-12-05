@@ -13,6 +13,7 @@
 				<li role="presentation" class="{{#if isActive 'text'}} active{{/if}}"><a id="text_mode" href="#">Text</a></li>
 				<li role="presentation" class="{{#if isActive 'html'}} active{{/if}}"><a id="html_mode" href="#">HTML</a></li>
 			</ul>
+			{{> font_toolbar}}
 		</div>
 
 		<div id="post_text_content_holder" class="form-control scroll {{#if isActive 'html'}} hidden{{/if}}" contentEditable="true" placeholder="Text"></div>

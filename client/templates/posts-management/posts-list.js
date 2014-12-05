@@ -58,7 +58,7 @@ if (Meteor.isClient) {
 				contentSelector = $('#post_text_content_holder');
 
 			if (!_.isUndefined(previouslySelectedToEditIndex)) {
-				$('#post_row_' + previouslySelectedToEditIndex).removeClass('success');
+				$('#post_row_' + previouslySelectedToEditIndex).removeClass('info');
 			}
 
 			subjectSelector.val('');
@@ -71,7 +71,7 @@ if (Meteor.isClient) {
 				Session.set('id-of-post-to-be-edited', selectedToEditId);
 				Session.set('index-of-post-to-be-edited', selectedToEditIndex);
 
-				$('#post_row_' + selectedToEditIndex).addClass('success');
+				$('#post_row_' + selectedToEditIndex).addClass('info');
 				// load the post that will be edited in the editor
 				subjectSelector.val(this.subject);
 				contentSelector.html(this.content);
