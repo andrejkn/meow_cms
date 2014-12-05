@@ -8,21 +8,34 @@
 		</div>
 
 		<br/>
-		<div class="input-group">
-			<ul class="nav nav-tabs">
-				<li role="presentation" class="{{#if isActive 'text'}} active{{/if}}"><a id="text_mode" href="#">Text</a></li>
-				<li role="presentation" class="{{#if isActive 'html'}} active{{/if}}"><a id="html_mode" href="#">HTML</a></li>
-			</ul>
-			{{> font_toolbar}}
+
+		<div class="btn-toolbar" role="toolbar" aria-label="Editor Toolbar">
+			<div class="input-group">
+				<ul class="nav nav-tabs" style="border-bottom: 0 solid #ddd !important;">
+					<li role="presentation" class="{{#if isActive 'text'}} active{{/if}}"><a id="text_mode" href="#">Text</a></li>
+					<li role="presentation" class="{{#if isActive 'html'}} active{{/if}}"><a id="html_mode" href="#">HTML</a></li>
+				</ul>
+			</div>
+			{{> element_insertion_toolbar}}
+			{{> text_management_toolbar}}
+			{{> font_management_toolbar}}
 		</div>
 
 		<div id="post_text_content_holder" class="form-control scroll {{#if isActive 'html'}} hidden{{/if}}" contentEditable="true" placeholder="Text"></div>
 		<textarea id="post_html_content_holder" class="form-control scroll {{#if isActive 'text'}} hidden{{/if}}" rows="14" placeholder="HTML">{{htmlPostContent}}</textarea>
 
 		<br/>
-		<div class="input-group">
-			<button id="save_post" type="button" class="btn btn-lg btn-primary">Save</button>
+		<div class="btn-toolbar">
+			<div class="btn-group pull-left">
+				<button id="save_post" type="button" class="btn btn-lg btn-primary">Save Changes</button>
+				<button id="create_post" type="button" class="btn btn-lg btn-success">Create Post</button>
+			</div>
+
+			<div class="btn-group pull-right">
+				<button id="clear_text" type="button" class="btn btn-lg btn-danger">Clear</button>
+			</div>
 		</div>
+
 
 	</div>
 
